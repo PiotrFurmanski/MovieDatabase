@@ -20,14 +20,15 @@ class MovieListCell: UICollectionViewCell {
     
     func setup(movie: MovieModel, viewModel: MovieListCellViewModel) {
         titleLabel.text = movie.title
-        movieImageView.image = viewModel.cachedImage[movie.imdbID] ?? UIImage(named: Constants.placeholder)
+        movieImageView.image = viewModel.cachedImage.object(forKey: movie.imdbID as NSString) ?? UIImage(named: Constants.placeholder)
         movieId = movie.imdbID
         
-        guard viewModel.cachedImage[movie.imdbID] == nil else { return }
-        
+        guard viewModel.cachedImage.object(forKey: movie.imdbID as NSString) == nil else { return }
+        movieImageView.contentMode = .scaleAspectFit
         viewModel.loadImage(urlString: movie.poster, id: movie.imdbID) { [weak self] (image, movieId) in
             guard let strongSelf = self, strongSelf.movieId == movieId else { return }
             if let image = image {
+                strongSelf.movieImageView.contentMode = .scaleAspectFill
                 UIView.transition(with: strongSelf.movieImageView,
                                   duration: Constants.transitionDuration,
                                   options: .transitionCrossDissolve, animations: {

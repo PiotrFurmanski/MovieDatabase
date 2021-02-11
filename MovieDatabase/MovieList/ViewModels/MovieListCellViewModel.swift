@@ -8,11 +8,11 @@
 import UIKit
 
 class MovieListCellViewModel {
-    private(set) var cachedImage = [String: UIImage]()
+    private(set) var cachedImage = NSCache<NSString, UIImage>()
     
     func loadImage(urlString: String, id: String,
                    completion: @escaping (_ image: UIImage?, _ id: String) -> ()) {
-        if let image = cachedImage[id] {
+        if let image = cachedImage.object(forKey: id as NSString) {
             completion(image, id)
             return
         }
@@ -23,7 +23,8 @@ class MovieListCellViewModel {
             guard let strongSelf = self else { return }
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {
-                    strongSelf.cachedImage[id] = image
+                    strongSelf.cachedImage.setObject(image,
+                                                     forKey: id as NSString)
                     DispatchQueue.main.async {
                         completion(image, id)
                     }

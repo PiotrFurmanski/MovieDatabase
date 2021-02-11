@@ -17,7 +17,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pw6-b4-4jH">
-                        <rect key="frame" x="0.0" y="0.0" width="224" height="179"/>
+                        <rect key="frame" x="0.0" y="0.0" width="121" height="179"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Pw6-b4-4jH" secondAttribute="height" multiplier="300:444" id="t5j-IW-lP7"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccT-5u-ibt">
                         <rect key="frame" x="0.0" y="181" width="224" height="26"/>
@@ -38,7 +41,6 @@
                 <constraint firstAttribute="trailing" secondItem="ccT-5u-ibt" secondAttribute="trailing" id="AuB-24-AC2"/>
                 <constraint firstItem="ccT-5u-ibt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="CRL-n7-7Ag"/>
                 <constraint firstItem="Pw6-b4-4jH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Gqb-io-8le"/>
-                <constraint firstAttribute="trailing" secondItem="Pw6-b4-4jH" secondAttribute="trailing" id="Kea-W4-bng"/>
                 <constraint firstAttribute="bottom" secondItem="Pw6-b4-4jH" secondAttribute="bottom" constant="28" id="ktg-8q-Sn3"/>
             </constraints>
             <size key="customSize" width="224" height="207"/>
