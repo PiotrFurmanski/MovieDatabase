@@ -17,7 +17,7 @@ protocol MovieServiceProtocol: AnyObject {
     func getDetails(for id: String, completion: @escaping (Result<MovieDetailsModel, Error>) -> Void)
 }
 
-class MovieServiceService: MovieServiceProtocol {
+class MovieService: MovieServiceProtocol {
     private struct Constansts {
         static let baseUrl = "http://www.omdbapi.com/?apikey=b9bd48a6"
         struct Endpoints {
