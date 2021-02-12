@@ -13,8 +13,8 @@ class MovieListViewController: UIViewController {
     
     private struct Constants {
         static let ok = "OK"
-        static let cellWidth: CGFloat = 100
         static let cellHeight: CGFloat = 250
+        static let segue = "MovieDetails"
     }
     
     private lazy var viewModel: MovieListViewModelProtocol = {
@@ -46,18 +46,18 @@ class MovieListViewController: UIViewController {
     @objc func refresh() {
         viewModel.loadData(completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let movieDetailsVC = segue.destination as? MovieDetailsViewController,
+              let index = sender as? Int else { return }
+        movieDetailsVC.movieModel = viewModel.movieModels[index]
+        movieDetailsVC.cachedImage = viewModel.cellViewModel.cachedImage.object(forKey: viewModel.movieModels[index].imdbID as NSString)
+    }
 }
 
-extension MovieListViewController: MovieListViewProtocol {
+extension MovieListViewController: ReloadViewProtocol {
     func reload() {
         collectionView.reloadData()
-    }
-    
-    func showDetails(for city: MovieModel, image: UIImage?) {
-        //        let movieDetailsVC = MovieDetailsViewController()
-        //        movieDetailsVC.movieModel = movie
-        //        movieDetailsVC.movieCachedImage = image
-        //        navigationController?.pushViewController(movieDetailsVC, animated: true)
     }
     
     func stopLoadingIndicator() {
@@ -83,14 +83,14 @@ extension MovieListViewController: UICollectionViewDataSource, UICollectionViewD
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: MovieListCell.self),
                                                             for: indexPath) as? MovieListCell else { return UICollectionViewCell() }
         
-        cell.setup(movie: viewModel.movieModels[indexPath.row], viewModel: viewModel.cellViewModel)
+        cell.setup(movie: viewModel.movieModels[indexPath.row],
+                   viewModel: viewModel.cellViewModel)
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        showDetails(for: filteredCities[indexPath.row],
-//                    image: cellViewModel.cachedImage[filteredCities[indexPath.row].cityId])
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: Constants.segue, sender: indexPath.row)
+    }
     
 }
 
@@ -99,10 +99,5 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: collectionView.bounds.size.width/2.2, height: Constants.cellHeight)
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-//                        insetForSectionAt section: Int) -> UIEdgeInsets {
-//        UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-//    }
 }
 

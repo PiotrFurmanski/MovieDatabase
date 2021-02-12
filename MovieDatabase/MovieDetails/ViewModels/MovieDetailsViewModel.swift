@@ -1,26 +1,19 @@
 //
-//  MovieListViewModel.swift
+//  MovieDetailsViewModel.swift
 //  MovieDatabase
 //
-//  Created by Piotr Furmanski on 11/02/2021.
+//  Created by Piotr Furmanski on 12/02/2021.
 //
 
 import UIKit
 
-protocol ReloadViewProtocol: AnyObject {
-    func reload()
-    func stopLoadingIndicator()
-    func show(error: String)
+protocol MovieDetailsViewModelProtocol: AnyObject {
+    func loadData(for id: String, completion: (() -> ())?)
+    var movieDetailsModel: MovieDetailsModel? { get }
 }
 
-protocol MovieListViewModelProtocol: AnyObject {
-    func loadData(completion: (() -> ())?)
-    var movieModels: [MovieModel] { get }
-    var cellViewModel: MovieListCellViewModel { get }
-}
-
-class MovieListViewModel: MovieListViewModelProtocol {
-    private(set) var movieModels = [MovieModel]()
+class MovieDetailsViewModel: MovieDetailsViewModelProtocol {
+    private(set) var movieDetailsModel: MovieDetailsModel?
     
     private weak var delegate: ReloadViewProtocol?
     private let service: MovieServiceProtocol
@@ -31,13 +24,13 @@ class MovieListViewModel: MovieListViewModelProtocol {
         self.delegate = delegate
     }
     
-    func loadData(completion: (() -> ())? = nil) {
-        service.getList(for: "Hero") { [weak self] response in
+    func loadData(for id: String, completion: (() -> ())? = nil) {
+        service.getDetails(for: id) { [weak self] response in
             guard let strongSelf = self else { return }
             
             switch response {
-            case .success(let movieModels):
-                strongSelf.movieModels = movieModels
+            case .success(let movieDetails):
+                strongSelf.movieDetailsModel = movieDetails
                 DispatchQueue.main.async {
                     strongSelf.delegate?.stopLoadingIndicator()
                     strongSelf.delegate?.reload()
@@ -54,4 +47,5 @@ class MovieListViewModel: MovieListViewModelProtocol {
     }
     
 }
+
 

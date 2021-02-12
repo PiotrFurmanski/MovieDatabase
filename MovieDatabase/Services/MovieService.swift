@@ -22,7 +22,7 @@ class MovieService: MovieServiceProtocol {
         static let baseUrl = "http://www.omdbapi.com/?apikey=b9bd48a6"
         struct Endpoints {
             static let list = "&type=movie&s="
-            static let detail = "6&i="
+            static let detail = "&i="
         }
     }
     
