@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kax-XJ-x4d">
-                                <rect key="frame" x="20" y="88" width="374" height="774"/>
+                                <rect key="frame" x="20" y="144" width="374" height="718"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="D3f-1D-uD2">
                                     <size key="itemSize" width="128" height="128"/>
@@ -27,24 +27,36 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" id="2ss-LB-QKd">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="2ss-LB-QKd">
                                 <rect key="frame" x="20" y="39" width="374" height="818"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P1R-Kt-DEZ">
+                                <rect key="frame" x="20" y="96" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="jwy-I9-fv1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="kax-XJ-x4d" firstAttribute="top" secondItem="P1R-Kt-DEZ" secondAttribute="bottom" constant="8" id="L44-78-Qd6"/>
                             <constraint firstItem="kax-XJ-x4d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="g2e-pS-9Du"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="P1R-Kt-DEZ" secondAttribute="trailing" constant="20" id="gCg-je-TeH"/>
+                            <constraint firstItem="P1R-Kt-DEZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="hOM-2G-eya"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kax-XJ-x4d" secondAttribute="bottom" id="kbA-bD-EoK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kax-XJ-x4d" secondAttribute="trailing" constant="20" id="ojy-4O-D9E"/>
-                            <constraint firstItem="kax-XJ-x4d" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rBt-YG-xvv"/>
+                            <constraint firstItem="P1R-Kt-DEZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="uGm-He-Sxk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dZV-EK-gZq"/>
                     <connections>
                         <outlet property="collectionView" destination="kax-XJ-x4d" id="Rtz-Br-hGV"/>
                         <outlet property="loadingIndicator" destination="2ss-LB-QKd" id="L83-wc-7i6"/>
+                        <outlet property="searchField" destination="P1R-Kt-DEZ" id="86d-lb-oeW"/>
                         <segue destination="AQa-tJ-4i6" kind="show" identifier="MovieDetails" id="R1R-8X-aB7"/>
                     </connections>
                 </viewController>

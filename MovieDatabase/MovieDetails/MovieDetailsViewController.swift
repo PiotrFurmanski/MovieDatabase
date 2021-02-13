@@ -53,6 +53,10 @@ class MovieDetailsViewController: UIViewController {
 }
 
 extension MovieDetailsViewController: ReloadViewProtocol {
+    func startLoadingIndicator() {
+        loadingIndicator.startAnimating()
+    }
+    
     func reload() {
 //        collectionView.reloadData()
     }

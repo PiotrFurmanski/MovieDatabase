@@ -9,12 +9,13 @@ import UIKit
 
 protocol ReloadViewProtocol: AnyObject {
     func reload()
+    func startLoadingIndicator()
     func stopLoadingIndicator()
     func show(error: String)
 }
 
 protocol MovieListViewModelProtocol: AnyObject {
-    func loadData(completion: (() -> ())?)
+    func loadData(for title: String, completion: (() -> ())?)
     var movieModels: [MovieModel] { get }
     var cellViewModel: MovieListCellViewModel { get }
 }
@@ -31,8 +32,10 @@ class MovieListViewModel: MovieListViewModelProtocol {
         self.delegate = delegate
     }
     
-    func loadData(completion: (() -> ())? = nil) {
-        service.getList(for: "Hero") { [weak self] response in
+    func loadData(for title: String, completion: (() -> ())? = nil) {
+        guard !title.isEmpty else { return }
+        delegate?.startLoadingIndicator()
+        service.getList(for: title) { [weak self] response in
             guard let strongSelf = self else { return }
             
             switch response {

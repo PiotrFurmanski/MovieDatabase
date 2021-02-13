@@ -10,6 +10,8 @@ import UIKit
 class MovieListViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var searchField: UITextField!
+    
     
     private struct Constants {
         static let ok = "OK"
@@ -26,6 +28,7 @@ class MovieListViewController: UIViewController {
         view.backgroundColor = .white
         setupData()
         setupCollectionView()
+        searchField.delegate = self
     }
     
     private func setupData() {
@@ -33,7 +36,6 @@ class MovieListViewController: UIViewController {
                                 forCellWithReuseIdentifier: String(describing: MovieListCell.self))
         collectionView.dataSource = self
         collectionView.delegate = self
-        viewModel.loadData(completion: nil)
     }
     
     private func setupCollectionView() {
@@ -44,7 +46,9 @@ class MovieListViewController: UIViewController {
     }
     
     @objc func refresh() {
-        viewModel.loadData(completion: nil)
+        if let text = searchField.text {
+            viewModel.loadData(for: text, completion: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -56,6 +60,10 @@ class MovieListViewController: UIViewController {
 }
 
 extension MovieListViewController: ReloadViewProtocol {
+    func startLoadingIndicator() {
+        loadingIndicator.startAnimating()
+    }
+    
     func reload() {
         collectionView.reloadData()
     }
@@ -98,6 +106,16 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: collectionView.bounds.size.width/2.2, height: Constants.cellHeight)
+    }
+}
+
+extension MovieListViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let text = textField.text {
+            viewModel.loadData(for: text, completion: nil)
+        }
+        textField.resignFirstResponder()
+        return true
     }
 }
 
