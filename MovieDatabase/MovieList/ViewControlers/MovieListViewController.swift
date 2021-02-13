@@ -100,6 +100,14 @@ extension MovieListViewController: UICollectionViewDataSource, UICollectionViewD
         performSegue(withIdentifier: Constants.segue, sender: indexPath.row)
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == collectionView.numberOfItems(inSection: indexPath.section) - 1 {
+            if let text = searchField.text {
+                viewModel.loadMoreData(for: text, completion: nil)
+            }
+        }
+    }
+    
 }
 
 extension MovieListViewController: UICollectionViewDelegateFlowLayout {

@@ -9,9 +9,11 @@ import Foundation
 
 struct SearchResponseModel: Codable {
     let result: [MovieModel]
+    let totalResults: String
     
     private enum CodingKeys: String, CodingKey {
         case result = "Search"
+        case totalResults
     }
 }
 

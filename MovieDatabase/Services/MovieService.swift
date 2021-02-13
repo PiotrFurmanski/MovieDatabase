@@ -13,8 +13,11 @@ enum ServiceError: Error {
 
 
 protocol MovieServiceProtocol: AnyObject {
-    func getList(for title: String, completion: @escaping (Result<[MovieModel], Error>) -> Void)
-    func getDetails(for id: String, completion: @escaping (Result<MovieDetailsModel, Error>) -> Void)
+    func getList(for title: String,
+                 page: Int,
+                 completion: @escaping (Result<SearchResponseModel, Error>) -> Void)
+    func getDetails(for id: String,
+                    completion: @escaping (Result<MovieDetailsModel, Error>) -> Void)
 }
 
 class MovieService: MovieServiceProtocol {
@@ -23,11 +26,13 @@ class MovieService: MovieServiceProtocol {
         struct Endpoints {
             static let list = "&type=movie&s="
             static let detail = "&i="
+            static let page = "&page="
         }
     }
     
-    func getList(for title: String, completion: @escaping (Result<[MovieModel], Error>) -> Void) {
-        guard let strUrl = "\(Constansts.baseUrl)\(Constansts.Endpoints.list)\(title)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+    func getList(for title: String, page: Int,
+                 completion: @escaping (Result<SearchResponseModel, Error>) -> Void) {
+        guard let strUrl = "\(Constansts.baseUrl)\(Constansts.Endpoints.list)\(title)\(Constansts.Endpoints.page)\(page)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
               let url = URL(string: strUrl) else { return }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -46,7 +51,7 @@ class MovieService: MovieServiceProtocol {
                 let decoder = JSONDecoder()
                 let response = try decoder.decode(SearchResponseModel.self, from: data)
                 
-                completion(.success(response.result))
+                completion(.success(response))
                 
             } catch let error {
                 completion(.failure(error))
