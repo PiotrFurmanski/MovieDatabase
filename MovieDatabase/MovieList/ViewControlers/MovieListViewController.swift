@@ -16,6 +16,7 @@ class MovieListViewController: UIViewController {
     private struct Constants {
         static let ok = "OK"
         static let cellHeight: CGFloat = 250
+        static let widhtProportion: CGFloat = 2.2
         static let segue = "MovieDetails"
     }
     
@@ -113,7 +114,8 @@ extension MovieListViewController: UICollectionViewDataSource, UICollectionViewD
 extension MovieListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.bounds.size.width/2.2, height: Constants.cellHeight)
+        CGSize(width: collectionView.bounds.size.width/Constants.widhtProportion,
+               height: Constants.cellHeight)
     }
 }
 
