@@ -16,6 +16,7 @@ struct MovieDetailsModel: Codable {
     let genre: String
     let imdbID: String
     let director: String
+    let writer: String
     let actors: String
     let plot: String
     let language: String
@@ -38,6 +39,7 @@ struct MovieDetailsModel: Codable {
         case genre = "Genre"
         case imdbID
         case director = "Director"
+        case writer = "Writer"
         case actors = "Actors"
         case plot = "Plot"
         case language = "Language"

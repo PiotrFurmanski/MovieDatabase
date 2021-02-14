@@ -10,6 +10,10 @@ import UIKit
 class MovieDetailsViewController: UIViewController {
     @IBOutlet private weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var synopsisView: SynopsisView!
+    @IBOutlet private weak var creditsView: CreditsView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var yearLabel: UILabel!
     
     private struct Constants {
         static let ok = "OK"
@@ -27,28 +31,14 @@ class MovieDetailsViewController: UIViewController {
         imageView.image = cachedImage
         view.backgroundColor = .white
         setupData()
-        setupCollectionView()
     }
     
     private func setupData() {
-//        collectionView.register(UINib(nibName: String(describing: MovieListCell.self), bundle: nil),
-//                                forCellWithReuseIdentifier: String(describing: MovieListCell.self))
-//        collectionView.dataSource = self
-//        collectionView.delegate = self
+        titleLabel.text = ""
+        yearLabel.text = ""
         if let movieModel = movieModel {
             viewModel.loadData(for: movieModel.imdbID, completion: nil)
         }
-    }
-    
-    private func setupCollectionView() {
-//        let refreshControl = UIRefreshControl()
-//        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-//        collectionView.refreshControl = refreshControl
-//        collectionView.backgroundColor = .white
-    }
-    
-    @objc func refresh() {
-//        viewModel.loadData(completion: nil)
     }
 }
 
@@ -58,7 +48,10 @@ extension MovieDetailsViewController: ReloadViewProtocol {
     }
     
     func reload() {
-//        collectionView.reloadData()
+        titleLabel.text = viewModel.movieDetailsModel?.title
+        yearLabel.text = viewModel.movieDetailsModel?.year
+        synopsisView.setup(movie: viewModel.movieDetailsModel)
+        creditsView.setup(movie: viewModel.movieDetailsModel)
     }
     
     func stopLoadingIndicator() {
