@@ -35,9 +35,9 @@ class CreditsView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        directorLabel.text = "Director: "
-        writerLabel.text = "Writer: "
-        actorsLabel.text = "Actors: "
+        directorLabel.text = ""
+        writerLabel.text = ""
+        actorsLabel.text = ""
     }
 
 }
