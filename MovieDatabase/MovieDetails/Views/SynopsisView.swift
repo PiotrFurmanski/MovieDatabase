@@ -8,12 +8,14 @@
 import UIKit
 
 class SynopsisView: UIView {
-    @IBOutlet weak var synopsisLabel: UILabel!
-    @IBOutlet var contentView: UIView!
-    @IBOutlet weak var categoryLabel: UILabel!
-    @IBOutlet weak var lengthLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var reviewsLabel: UILabel!
+    @IBOutlet private weak var synopsisLabel: UILabel!
+    @IBOutlet private var contentView: UIView!
+    @IBOutlet private weak var categoryLabel: UILabel!
+    @IBOutlet private weak var lengthLabel: UILabel!
+    @IBOutlet private weak var scoreLabel: UILabel!
+    @IBOutlet private weak var reviewsLabel: UILabel!
+    @IBOutlet private weak var scoreNameLabel: UILabel!
+    @IBOutlet private weak var votesNameLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,6 +34,8 @@ class SynopsisView: UIView {
         lengthLabel.text = movie.runtime
         scoreLabel.text = movie.imdbRating
         reviewsLabel.text = movie.imdbVotes
+        scoreNameLabel.isHidden = false
+        votesNameLabel.isHidden = false
     }
     
     private func commontInit() {
@@ -42,6 +46,8 @@ class SynopsisView: UIView {
         synopsisLabel.text = ""
         categoryLabel.text = ""
         lengthLabel.text = ""
+        scoreNameLabel.isHidden = true
+        votesNameLabel.isHidden = true
     }
 
 }

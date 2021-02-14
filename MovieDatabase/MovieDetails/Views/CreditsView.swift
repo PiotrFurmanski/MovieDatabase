@@ -26,7 +26,7 @@ class CreditsView: UIView {
     func setup(movie: MovieDetailsModel?) {
         guard let movie = movie else { return }
         directorLabel.text = "Director: \(movie.director)"
-        writerLabel.text = "Writer: \(movie.writer)"
+        writerLabel.text = "Writers: \(movie.writer)"
         actorsLabel.text = "Actors: \(movie.actors)"
     }
     

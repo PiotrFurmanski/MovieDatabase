@@ -103,6 +103,20 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xn3-UL-d7y">
+                                                <rect key="frame" x="0.0" y="282" width="414" height="1.5"/>
+                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1.5" id="CWy-57-kQ0"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Jt-Mx-A2T">
+                                                <rect key="frame" x="0.0" y="616" width="414" height="1.5"/>
+                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1.5" id="5bp-QY-Cmr"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZXI-GA-LNY" customClass="SynopsisView" customModule="MovieDatabase" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="282" width="382" height="181"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -115,18 +129,24 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="g7N-Xi-Qa6" secondAttribute="trailing" constant="16" id="8DX-Yx-Gxi"/>
-                                            <constraint firstItem="g7N-Xi-Qa6" firstAttribute="top" secondItem="ZXI-GA-LNY" secondAttribute="bottom" constant="8" id="BgX-cl-BHn"/>
+                                            <constraint firstItem="5Jt-Mx-A2T" firstAttribute="top" secondItem="ZXI-GA-LNY" secondAttribute="bottom" constant="8" id="B8i-qZ-DXN"/>
+                                            <constraint firstItem="g7N-Xi-Qa6" firstAttribute="top" secondItem="ZXI-GA-LNY" secondAttribute="bottom" constant="16" id="BgX-cl-BHn"/>
+                                            <constraint firstAttribute="trailing" secondItem="5Jt-Mx-A2T" secondAttribute="trailing" id="FiM-C1-QFL"/>
                                             <constraint firstItem="9Mm-r7-cU0" firstAttribute="leading" secondItem="zLv-ye-gft" secondAttribute="leading" constant="16" id="JXc-uL-2X0"/>
+                                            <constraint firstItem="5Jt-Mx-A2T" firstAttribute="leading" secondItem="zLv-ye-gft" secondAttribute="leading" id="Lb7-Hw-tpW"/>
                                             <constraint firstItem="g7N-Xi-Qa6" firstAttribute="leading" secondItem="zLv-ye-gft" secondAttribute="leading" constant="16" id="VS9-H6-vt6"/>
                                             <constraint firstAttribute="trailing" secondItem="9Mm-r7-cU0" secondAttribute="trailing" constant="16" id="WcT-2G-Idx"/>
                                             <constraint firstItem="qcy-Ml-FeS" firstAttribute="top" secondItem="zLv-ye-gft" secondAttribute="top" constant="16" id="dIN-ze-Ls4"/>
-                                            <constraint firstItem="ZXI-GA-LNY" firstAttribute="top" secondItem="6eo-Ac-6DQ" secondAttribute="bottom" constant="8" id="dpj-HC-ZEi"/>
+                                            <constraint firstItem="ZXI-GA-LNY" firstAttribute="top" secondItem="6eo-Ac-6DQ" secondAttribute="bottom" constant="16" id="dpj-HC-ZEi"/>
                                             <constraint firstItem="6eo-Ac-6DQ" firstAttribute="top" secondItem="9Mm-r7-cU0" secondAttribute="bottom" constant="8" id="e5n-oD-e0m"/>
                                             <constraint firstItem="ZXI-GA-LNY" firstAttribute="leading" secondItem="zLv-ye-gft" secondAttribute="leading" constant="16" id="gCg-d7-b32"/>
                                             <constraint firstAttribute="bottom" secondItem="g7N-Xi-Qa6" secondAttribute="bottom" constant="8" id="hKs-OV-aOt"/>
                                             <constraint firstAttribute="trailing" secondItem="6eo-Ac-6DQ" secondAttribute="trailing" constant="16" id="iAR-9y-Tkj"/>
                                             <constraint firstItem="qcy-Ml-FeS" firstAttribute="centerX" secondItem="zLv-ye-gft" secondAttribute="centerX" id="mg8-Zi-k1y"/>
+                                            <constraint firstAttribute="trailing" secondItem="xn3-UL-d7y" secondAttribute="trailing" id="o4l-HA-qkP"/>
                                             <constraint firstAttribute="trailing" secondItem="ZXI-GA-LNY" secondAttribute="trailing" constant="16" id="oa0-ZV-oVK"/>
+                                            <constraint firstItem="xn3-UL-d7y" firstAttribute="leading" secondItem="zLv-ye-gft" secondAttribute="leading" id="t1G-2S-Ot5"/>
+                                            <constraint firstItem="xn3-UL-d7y" firstAttribute="top" secondItem="6eo-Ac-6DQ" secondAttribute="bottom" constant="8" id="tKe-em-dwF"/>
                                             <constraint firstItem="9Mm-r7-cU0" firstAttribute="top" secondItem="qcy-Ml-FeS" secondAttribute="bottom" constant="8" id="wuf-Pe-Q3W"/>
                                             <constraint firstItem="6eo-Ac-6DQ" firstAttribute="leading" secondItem="zLv-ye-gft" secondAttribute="leading" constant="16" id="xAg-I3-rxa"/>
                                         </constraints>
@@ -192,6 +212,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

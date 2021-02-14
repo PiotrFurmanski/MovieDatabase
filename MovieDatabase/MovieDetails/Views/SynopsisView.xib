@@ -15,7 +15,9 @@
                 <outlet property="lengthLabel" destination="Uk0-K3-kFb" id="eV5-rh-O7r"/>
                 <outlet property="reviewsLabel" destination="4V3-A1-jMz" id="3aN-1P-Zvv"/>
                 <outlet property="scoreLabel" destination="73D-7e-6QB" id="dsc-xH-GVF"/>
+                <outlet property="scoreNameLabel" destination="01B-nl-pZi" id="8TL-jO-wZF"/>
                 <outlet property="synopsisLabel" destination="MIC-vP-A6k" id="cLh-gc-vKT"/>
+                <outlet property="votesNameLabel" destination="lOi-sI-s0S" id="mNU-is-w9r"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
