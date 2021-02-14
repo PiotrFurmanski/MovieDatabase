@@ -102,6 +102,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F02110825D9BEAB0048BD9A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6F7D2CA025D6E5FF00999832 /* MovieDetailsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		6F1B135E25D98637004A6B0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,9 +124,9 @@
 		6F7D2C9F25D6E5D600999832 /* MovieDetails */ = {
 			isa = PBXGroup;
 			children = (
+				6F02110825D9BEAB0048BD9A /* ViewControllers */,
 				6F1B135E25D98637004A6B0D /* Views */,
 				6F7D2CA825D6E64F00999832 /* ViewModels */,
-				6F7D2CA025D6E5FF00999832 /* MovieDetailsViewController.swift */,
 			);
 			path = MovieDetails;
 			sourceTree = "<group>";
@@ -140,12 +148,12 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		6F80708425D5B4D600D7221E /* ViewControlers */ = {
+		6F80708425D5B4D600D7221E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				6F8430ED25D478A2005A710D /* MovieListViewController.swift */,
 			);
-			path = ViewControlers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		6F80708D25D5B69500D7221E /* Views */ = {
@@ -233,7 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				6F80708D25D5B69500D7221E /* Views */,
-				6F80708425D5B4D600D7221E /* ViewControlers */,
+				6F80708425D5B4D600D7221E /* ViewControllers */,
 				6F80708325D5B4CE00D7221E /* ViewModels */,
 			);
 			path = MovieList;

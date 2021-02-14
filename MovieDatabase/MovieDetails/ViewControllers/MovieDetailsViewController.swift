@@ -17,6 +17,7 @@ class MovieDetailsViewController: UIViewController {
     
     private struct Constants {
         static let ok = "OK"
+        static let placeholder = "video"
     }
     
     var movieModel: MovieModel?
@@ -28,7 +29,7 @@ class MovieDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = cachedImage
+        imageView.image = cachedImage ?? UIImage(named: Constants.placeholder)
         view.backgroundColor = .white
         setupData()
     }
@@ -56,7 +57,6 @@ extension MovieDetailsViewController: ReloadViewProtocol {
     
     func stopLoadingIndicator() {
         loadingIndicator.stopAnimating()
-//        collectionView.refreshControl?.endRefreshing()
     }
     
     func show(error: String) {
