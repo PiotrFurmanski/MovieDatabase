@@ -38,13 +38,13 @@ class MovieListViewModel: MovieListViewModelProtocol {
     }
     
     func loadMoreData(for title: String, completion: (() -> ())? = nil) {
-        guard !title.isEmpty else { return }
-        guard movieModels.count < totalMovies || totalMovies == 0 else { return }
+        guard !title.isEmpty else { completion?(); return }
+        guard movieModels.count < totalMovies || totalMovies == 0 else { completion?(); return }
         loadList(for: title, completion: completion)
     }
     
     func loadData(for title: String, completion: (() -> ())? = nil) {
-        guard !title.isEmpty else { return }
+        guard !title.isEmpty else { completion?(); return }
         movieModels.removeAll()
         totalMovies = 0
         loadList(for: title, completion: completion)
